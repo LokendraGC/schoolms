@@ -12,7 +12,7 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-        return view('backend.layouts.app');
+        return view('backend.dashboard');
     }
     public function getForm(){
         return view('backend.layouts.form');
