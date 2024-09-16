@@ -17,4 +17,7 @@ class AdminController extends Controller
     public function getForm(){
         return view('backend.layouts.form');
     }
+    public function getTable(){
+        return view('backend.layouts.table');
+    }
 }

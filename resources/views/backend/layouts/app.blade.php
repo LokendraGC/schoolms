@@ -9,6 +9,7 @@
     <title>School Management System</title>
 
     @include('backend.assets.styles')
+    @yield('custom-css')
 
     <script nonce="5359bac1-7c0b-4c2c-af45-bf8ee305352d">
         try {
@@ -92,7 +93,9 @@
         @include('backend.layouts.header')
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
             @include('backend.layouts.sidebar')
+            
         </aside>
 
         <div class="content-wrapper">
@@ -112,6 +115,7 @@
     </div>
 
     @include('backend.assets.scripts')
+    @yield('custom-js')
 
 </body>
 

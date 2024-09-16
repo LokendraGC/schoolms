@@ -9,4 +9,5 @@ Route::get('/', function () {
 
 Route::get('admin/login',[AdminController::class,'getLogin'])->name('admin.login');
 Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::get('/form',[AdminController::class,'getForm'])->name('general-form');
+Route::get('/form',[AdminController::class,'getForm'])->name('admin.form');
+Route::get('/table',[AdminController::class,'getTable'])->name('admin.table');
