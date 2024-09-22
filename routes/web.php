@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/login',[AdminController::class,'getLogin'])->name('admin.login');
-Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::get('/form',[AdminController::class,'getForm'])->name('admin.form');
-Route::get('/table',[AdminController::class,'getTable'])->name('admin.table');
+
+require __DIR__ .'/admin.php';
