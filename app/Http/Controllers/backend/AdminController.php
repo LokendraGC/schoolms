@@ -13,22 +13,33 @@ class AdminController extends Controller
         return view('backend.auth.login');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
-           $request->validate([
+        $request->validate([
             'email' => 'required | email',
             'password' => 'required'
-           ]);
+        ]);
 
-           if( Auth::attempt( $request->only('email','password')) ){
+        if (Auth::attempt($request->only('email', 'password'))) {
+
+            // $user = Auth::user();
+
+            // if( $user->hasRole('admin') ){
 
             return redirect()->route('admin.dashboard');
 
-           }
+            // }
 
-           return back()->withErrors([
+            // Auth::logout();
+
+            // return back()->withErrors([
+            //     'autherror' => 'You do not have permission to access'
+            // ]);
+        }
+
+        return back()->withErrors([
             'autherror' => 'The provided credential do not match'
-           ]);
+        ]);
     }
-
 }

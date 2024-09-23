@@ -13,7 +13,7 @@ Route::middleware('admin_guest')->prefix('/admin/')->group(function () {
 
 });
 
-Route::middleware('admin_auth')->prefix('/admin/')->group(function(){
+Route::middleware('admin_auth:admin')->prefix('/admin/')->group(function(){
     
     //dashboard routes 
     Route::get('dashboard',[DashboardController::class,'dashboard'])->name('admin.dashboard');

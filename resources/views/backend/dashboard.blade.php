@@ -5,7 +5,28 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">
+                        @php
+                            $user = Auth::user();
+                            $hour = now()->setTimezone('Asia/Kathmandu')->format('H'); // Get the current hour in Kathmandu time
+                            $greeting = '';
+
+                            if ($hour >= 5 && $hour < 12) {
+                                $greeting = 'Good Morning';
+                            } elseif ($hour >= 12 && $hour < 17) {
+                                $greeting = 'Good Afternoon';
+                            } elseif ($hour >= 17 && $hour < 21) {
+                                $greeting = 'Good Evening';
+                            } else {
+                                $greeting = 'Good Night';
+                            }
+                        @endphp
+                    
+                        @if($user->hasRole('admin'))
+                            {{ $greeting }}, {{ $user->name }}
+                        @endif
+                    </h1>                    
+                    
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
