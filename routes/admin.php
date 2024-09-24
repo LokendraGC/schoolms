@@ -1,6 +1,7 @@
 <?php
 // auth routes
 
+use App\Http\Controllers\backend\AcademicController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,10 @@ Route::middleware('admin_auth:admin')->prefix('/admin/')->group(function(){
     Route::get('form',[DashboardController::class,'getForm'])->name('admin.form');
     Route::get('table',[DashboardController::class,'getTable'])->name('admin.table');
     Route::get('logout', [DashboardController::class, 'logout'])->name('admin.logout');
+
+    // Academic Year
+    Route::get('academic-year/create', [AcademicController::class, 'index'])->name('admin.create');
+    Route::post('academic-year/store', [AcademicController::class, 'store'])->name('academic.store');
 
 });
 

@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+// use Illuminate\Http\Response;
 
 class AuthMiddleware
 {
@@ -14,12 +15,14 @@ class AuthMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+     
     public function handle(Request $request, Closure $next, ...$roles): Response
     {   
-        // dd($roles);
-        if( Auth::check() && Auth::user()->hasAnyRole($roles)){
+        // dd($next);
+        if( Auth::check() && Auth::user()->hasAnyRole( $roles )){
             
-            return $next($request);
+            return $next( $request );
 
         }
         // return redirect()->route('admin.login');

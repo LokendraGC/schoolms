@@ -16,11 +16,11 @@ class GuestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {   
-        if( Auth::check() ){
+        if( Auth::check() ){    //Auth::check(): Checks if the user is already authenticated it routes to dashboard
 
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard');  
             
         }
-        return $next($request);
+        return $next($request);    //If the user is not authenticated (guest), the request continues to the next middleware or controller
     }
 }
