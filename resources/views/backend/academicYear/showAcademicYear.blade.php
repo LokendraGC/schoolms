@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="card-body">
-                            @if(Session::has('success'))
+                            @if (Session::has('success'))
                                 <div class="alert alert-success">{{ Session::get('success') }}</div>
                             @endif
                             <table id="example1" class="table table-bordered table-striped">
@@ -41,24 +41,23 @@
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                     @if ($data->isNotEmpty())
                                         @foreach ($data as $item)
                                             @php
-                                                $dateTime = new DateTime(
-                                                    $item->created_at,
-                                                    new DateTimeZone('UTC'),
-                                                ); // Original UTC time
-                                                $dateTime->setTimezone(new DateTimeZone('Asia/Kathmandu')); 
+                                                $dateTime = new DateTime($item->created_at, new DateTimeZone('UTC')); // Original UTC time
+                                                $dateTime->setTimezone(new DateTimeZone('Asia/Kathmandu'));
 
                                             @endphp
                                             <tr>
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->academicyear }}</td>
                                                 <td>{{ $dateTime->format('Y-m-d H:i:s') }}</td>
-                                                <td><a href=""><button class="btn btn-primary">Edit</button></a></td>
-                                                <td><a href=" {{ route('academic.delete', $item->id ) }} "><button class="btn btn-danger">Delete</button></a>
+                                                <td><a href="{{ route('academic.edit', $item->id) }} "><button class="btn btn-primary">Edit</button></a></td>
+                                                <td><a href=" {{ route('academic.delete', $item->id) }} "><button
+                                                            onclick="return confirm('Are you sure you want to delete?');"
+                                                            class="btn btn-danger">Delete</button></a>
                                                 </td>
                                             </tr>
                                         @endforeach

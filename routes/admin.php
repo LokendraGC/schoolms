@@ -28,8 +28,9 @@ Route::middleware('admin_auth:admin')->prefix('/admin/')->group(function(){
     Route::get('academic-year/create', [AcademicController::class, 'index'])->name('academic.create');
     Route::post('academic-year/store', [AcademicController::class, 'store'])->name('academic.store');
     Route::get('academic-year/show', [AcademicController::class, 'show'])->name('academic.show');
-    Route::post('academic-year/edit/{id}', [AcademicController::class, 'edit'])->name('academic.edit');
+    Route::get('academic-year/edit/{id}', [AcademicController::class, 'edit'])->name('academic.edit');
     Route::get('academic-year/delete/{id}', [AcademicController::class, 'delete'])->name('academic.delete');
+    Route::post('academic-year/update', [AcademicController::class, 'update'])->name('academic.update');
 
 });
 
