@@ -25,18 +25,25 @@
 
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Academic Year</h3>
+                            <h3 class="card-title">Academic Year</h3>
                         </div>
 
 
                         <form action="{{ route('academic.store') }}" method="post">
                             @csrf
                             <div class="card-body">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                                @endif
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
+                                    <label for="exampleInputEmail1">Academic Year</label>
                                     <input type="text" name="academicyear" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter email">
+                                        placeholder="2080-81">
                                 </div>
+
+                                @error('academicyear')
+                                <p class="text-danger">{{ $message }}</p>   
+                                @enderror
 
                             </div>
 
