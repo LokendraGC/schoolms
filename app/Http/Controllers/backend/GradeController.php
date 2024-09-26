@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Grade;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class GradeController extends Controller
@@ -21,9 +22,11 @@ class GradeController extends Controller
             'grade' => 'required'
         ]);
 
-        $data = new Grade();
-        $data->grade = $request->grade;
-        $data->save();
+        $post = new Post();
+        $post->record = $request->grade;
+        $post->type = 'grade';
+
+        $post->save();
 
         return redirect()->route('grade.create')->with('success', 'grade Added Successfully');
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class AcademicController extends Controller
@@ -20,9 +21,11 @@ class AcademicController extends Controller
             'academicyear' => 'required'
         ]);
 
-        $data = new AcademicYear();
-        $data->academicyear = $request->academicyear;
-        $data->save();
+        $post = new Post();
+        $post->record = $request->academicyear;
+        $post->type = 'academicyear';
+        
+        $post->save();
 
         return redirect()->route('academic.create')->with('success', 'AcademicYear Added Successfully');
     }
