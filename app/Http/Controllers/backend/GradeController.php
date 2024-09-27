@@ -34,23 +34,24 @@ class GradeController extends Controller
 
     public function show()
     {
-        $data = Grade::get();
+        $post = Post::where(['type'=>'grade'])->get();
+        return view('backend.grades.show-grades', ['post' => $post]);
 
-        return view('backend.grades.show-grades', ['data' => $data]);
     }
 
 
-    public function edit($id)
+    public function edit( $id )
     {
-        $data = Grade::find($id);
+        $data = Post::find($id);
 
         return view('backend.grades.edit-grade', ['data' => $data]);
+
     }
 
     public function update(Request $request)
     {
-        $data = Grade::find($request->id);
-        $data->grade = $request->grade;
+        $data = Post::find( $request->id );
+        $data->record = $request->grade;
         $data->update();
         return redirect()->route('grade.edit',$data->id)->with('success', 'Grade updated Successfully');
 
@@ -58,7 +59,7 @@ class GradeController extends Controller
 
     public function delete($id)
     {
-        $data = Grade::find($id);
+        $data = Post::find($id);
         $data->delete();
 
         return redirect()->route('grade.show')->with('success', 'Grade deleted Successfully');

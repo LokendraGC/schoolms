@@ -43,16 +43,16 @@
                                 </thead>
 
                                 <tbody>
-                                    @if ($data->isNotEmpty())
-                                        @foreach ($data as $item)
+                                    @if ($post->isNotEmpty())
+                                        @foreach ($post as $item)
                                             @php
                                                 $dateTime = new DateTime($item->created_at, new DateTimeZone('UTC')); // Original UTC time
                                                 $dateTime->setTimezone(new DateTimeZone('Asia/Kathmandu'));
 
                                             @endphp
                                             <tr>
-                                                <td>{{ $item->id }}</td>
-                                                <td>{{ $item->academicyear }}</td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->record }}</td>
                                                 <td>{{ $dateTime->format('Y-m-d H:i:s') }}</td>
                                                 <td><a href="{{ route('academic.edit', $item->id) }} "><button class="btn btn-primary">Edit</button></a></td>
                                                 <td><a href=" {{ route('academic.delete', $item->id) }} "><button

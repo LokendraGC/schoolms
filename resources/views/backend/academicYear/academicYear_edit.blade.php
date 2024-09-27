@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Academic Year</label>
                                     <input type="text" name="academicyear" class="form-control" id="exampleInputEmail1"
-                                        placeholder="2080-81" value="{{ old('academicyear', $data->academicyear) }}">
+                                        placeholder="2080-81" value="{{ old('academicyear', $data->record) }}">
                                 </div>
 
                                 @error('academicyear')

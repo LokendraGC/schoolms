@@ -33,23 +33,23 @@ class AcademicController extends Controller
 
     public function show()
     {
-        $data = AcademicYear::get();
+        $post = Post::where(['type' => 'academicyear'])->get();
 
-        return view('backend.academicYear.showAcademicYear', ['data' => $data]);
+        return view('backend.academicYear.showAcademicYear', ['post' => $post]);
     }
 
 
-    public function edit($id)
+    public function edit( $id )
     {
-        $data = AcademicYear::find($id);
+        $data = Post::find( $id );
 
         return view('backend.academicYear.academicYear_edit', ['data' => $data]);
     }
 
     public function update(Request $request)
     {
-        $data = AcademicYear::find($request->id);
-        $data->academicyear = $request->academicyear;
+        $data = Post::find($request->id);
+        $data->record = $request->academicyear;
         $data->update();
         return redirect()->route('academic.edit',$data->id)->with('success', 'AcademicYear updated Successfully');
 
@@ -57,7 +57,7 @@ class AcademicController extends Controller
 
     public function delete($id)
     {
-        $data = AcademicYear::find($id);
+        $data = Post::find($id);
         $data->delete();
 
         return redirect()->route('academic.show')->with('success', 'AcademicYear deleted Successfully');

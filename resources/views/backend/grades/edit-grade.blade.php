@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Grade / Level</label>
                                     <input type="text" name="grade" class="form-control" id="exampleInputEmail1"
-                                        placeholder="class 9" value="{{ old('grade', $data->grade) }}">
+                                        placeholder="class 9" value="{{ old('grade', $data->record) }}">
                                 </div>
 
                                 @error('grade')
